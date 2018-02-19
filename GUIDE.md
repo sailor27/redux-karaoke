@@ -11,3 +11,43 @@
 11. Write test expecting reducer to have RESTART_SONG action type, arrayPosition of 1 and to equal initialState.
 12. Modify reducer to define newState before the switch, and include both actions with different values for newState returned.
 13. Dispatch RESTART_SONG on user click inside conditional logic based on arrayPosition in relation to songLyricsArray.length.
+
+
+## Store: holds and mutates state
+```
+const {createStore} =  Redux;
+const store = createStore(reducer);
+```
+
+
+## REDUCER
+example:
+```
+const reducer = (state = initialState, action) => {
+  let newState;
+  switch (action.type) {
+    case 'ACTION_ONE':
+      // any necessary logic
+      newState = {
+        firstStateItem: state.firstStateItem,
+        secondStateItem: state.secondStateItem,
+        stateItemBeingChanged: action.newUpdatedStateValue,
+      }
+      return newState;
+    case 'ACTION_TWO':
+      // any necessary logic
+      newState = {
+        firstStateItem: state.firstStateItem,
+        secondStateItem: state.secondStateItem,
+        stateItemBeingChanged: action.differentUpdatedStateValue,
+      }
+      return newState;
+    default:
+      return state;
+  }
+}
+```
+
+_Structuring Advanced Redux State_
+1. Reorganize state store to include two song objects with keys.
+2. Restructure state, reducers, and tests to work with the two state slices. Write a reducer for selecting the current song by id.
